@@ -1,440 +1,433 @@
+@import url("https://fonts.googleapis.com/css2?family=Fredoka+One&family=Open+Sans&display=swap");
+
+/* --- VARIABLES --- */
+:root {
+  --background-light: #fdf6f0;
+  --background-dark: #f0e9e2;
+  --primary-accent: #f2a2a0;
+  --secondary-accent: #f5cdb8;
+  --text-color: #5d5d5d;
+  --header-color: #e88482;
+
+  --common-color: #a0a0a0;
+  --uncommon-color: #85c67a;
+  --rare-color: #7ab4c6;
+  --mythical-color: #c67ac4;
+  --legendary-color: #e09a69;
+  --ancient-color: #e0d069;
+  --exceedingly-rare-color: #e06969;
+  --infinity-color: #69d4e0;
+}
+
+/* --- GENERAL STYLES --- */
 body {
-    font-family: sans-serif;
-    background-color: #1a1a2e;
-    color: #ffffff;
-    margin: 0;
-    padding: 0;
-    text-align: center;
+  font-family: "Open Sans", sans-serif;
+  background-image: url('images/Gemini_Generated_Image_2bvk6l2bvk6l2bvk.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  color: var(--text-color);
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+h1,
+h2 {
+  font-family: "Fredoka One", cursive;
+  color: var(--header-color);
 }
 
 header {
-    background-color: #0f0f1b;
-    padding: 20px;
-    margin-bottom: 20px;
-}
-
-h1 {
-    margin: 0;
-    color: #ffc72c;
-}
-
-.player-stats {
-    margin-top: 10px;
-    font-size: 1.2em;
+  background-color: var(--background-dark);
+  padding: 20px;
+  margin-bottom: 20px;
+  border-bottom: 4px solid var(--secondary-accent);
 }
 
 main {
-    padding: 20px;
+  padding: 20px;
 }
 
-.case-opener {
-    margin-bottom: 40px;
+.nav-links {
+  margin-top: 40px;
+}
+
+.nav-link,
+.back-link {
+  font-family: "Fredoka One", cursive;
+  text-decoration: none;
+  background-color: var(--primary-accent);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 20px;
+  transition: background-color 0.2s;
+}
+
+.nav-link:hover,
+.back-link:hover {
+  background-color: var(--header-color);
 }
 
 /* --- REEL STYLING --- */
 .case-container {
-    width: 800px;
-    height: 150px;
-    margin: 20px auto;
-    overflow: hidden;
-    position: relative;
-    border: 3px solid #ffc72c;
-    border-radius: 10px;
-    background-color: #2c2c54;
+  width: 800px;
+  height: 150px;
+  margin: 20px auto;
+  overflow: hidden;
+  position: relative;
+  border: 4px solid var(--secondary-accent);
+  border-radius: 20px;
+  background-color: var(--background-dark);
 }
 
 .reel {
-    display: flex;
-    position: absolute;
-    left: 0;
-    top: 0;
+  display: flex;
+  position: absolute;
+  left: 0;
+  top: 0;
 }
 
 .item {
-    width: 150px;
-    height: 150px;
-    flex-shrink: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 5px;
-    box-sizing: border-box;
-    border-right: 1px solid rgba(255, 255, 255, 0.1);
-    text-align: center;
-    font-size: 0.8em;
-    font-weight: bold;
+  width: 150px;
+  height: 150px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  box-sizing: border-box;
+  text-align: center;
+  font-size: 0.9em;
+  font-weight: bold;
+  border-right: 2px dashed var(--secondary-accent);
 }
 
 .item img {
-    width: 80px;
-    height: 80px;
-    object-fit: contain;
-    margin-bottom: 5px;
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  margin-bottom: 10px;
 }
 
 .marker {
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 5px;
-    height: 100%;
-    background-color: #ff004c;
-    z-index: 10;
-    box-shadow: 0 0 10px #ff004c;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 10px;
+  height: 10px;
+  background-color: var(--primary-accent);
+  border-radius: 50%;
+  z-index: 10;
+  box-shadow: 0 0 10px var(--primary-accent);
+}
+.marker::before {
+  content: "";
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 15px solid var(--primary-accent);
+}
+.marker::after {
+  content: "";
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 15px solid var(--primary-accent);
 }
 
 /* --- RARITY COLORS --- */
-.common {
-    border-bottom: 4px solid #b0c4de;
-    background-color: #1f345c;
+.item.common,
+.prize-card.common {
+  background-color: var(--common-color);
+  color: white;
 }
-
-.uncommon {
-    border-bottom: 4px solid #66bb6a;
-    background-color: #1f5c38;
+.item.uncommon,
+.prize-card.uncommon {
+  background-color: var(--uncommon-color);
+  color: white;
 }
-
-.rare {
-    border-bottom: 4px solid #42a5f5;
-    background-color: #1f425c;
+.item.rare,
+.prize-card.rare {
+  background-color: var(--rare-color);
+  color: white;
 }
-
-.mythical {
-    border-bottom: 4px solid #ab47bc;
-    background-color: #3b1f5c;
+.item.mythical,
+.prize-card.mythical {
+  background-color: var(--mythical-color);
+  color: white;
 }
-
-.legendary {
-    border-bottom: 4px solid #ff7043;
-    background-color: #5c301f;
+.item.legendary,
+.prize-card.legendary {
+  background-color: var(--legendary-color);
+  color: white;
 }
-
-.ancient {
-    border-bottom: 4px solid #fbc02d;
-    background-color: #5c4b1f;
+.item.ancient,
+.prize-card.ancient {
+  background-color: var(--ancient-color);
+  color: white;
 }
-
-.exceedingly-rare {
-    border-bottom: 4px solid #e91e63;
-    background-color: #5c1f30;
+.item.exceedingly-rare,
+.prize-card.exceedingly-rare {
+  background-color: var(--exceedingly-rare-color);
+  color: white;
 }
-
-.infinity {
-    border-bottom: 4px solid #00ffff;
-    background-color: #1f5c5c;
+.item.infinity,
+.prize-card.infinity {
+  background-color: var(--infinity-color);
+  color: white;
 }
 
 .stattrack {
-    color: #ffc72c !important;
-}
-
-.stattrack-inventory-item {
-    border-left: 4px solid #ffc72c !important;
+  font-weight: bold;
+  text-shadow: 0 0 5px yellow;
 }
 
 /* --- BUTTONS --- */
-.case-buttons {
-    margin-top: 20px;
-}
-
 .case-btn {
-    padding: 10px 20px;
-    margin: 0 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1em;
-    font-weight: bold;
-    color: #ffffff;
-    transition: background-color 0.2s;
+  font-family: "Fredoka One", cursive;
+  padding: 15px 25px;
+  margin: 0 10px;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 1.1em;
+  color: #fff;
+  transition: all 0.2s;
+  border-bottom: 4px solid;
+}
+.case-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+}
+.case-btn:active:not(:disabled) {
+  transform: translateY(1px);
 }
 
 .normal-case {
-    background-color: #4b6cb7;
+  background-color: #7ab4c6;
+  border-bottom-color: #5c8a99;
 }
-
-.normal-case:hover:not(:disabled) {
-    background-color: #3b5a9a;
-}
-
 .rare-case {
-    background-color: #f7b731;
+  background-color: #c67ac4;
+  border-bottom-color: #995c97;
 }
-
-.rare-case:hover:not(:disabled) {
-    background-color: #d89b1e;
-}
-
 .infinity-case {
-    background-color: #2c3e50;
-}
-
-.infinity-case:hover:not(:disabled) {
-    background-color: #1e2a36;
+  background-color: #e06969;
+  border-bottom-color: #a84f4f;
 }
 
 .case-btn:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
+  opacity: 0.6;
+  cursor: not-allowed;
 }
 
-/* --- LIVE FEED / INVENTORY --- */
-.game-info {
-    display: flex;
-    justify-content: space-around;
-    text-align: left;
-    margin-top: 40px;
+/* --- LIVE FEED --- */
+.live-feed-section {
+  width: 45%;
+  background-color: var(--background-dark);
+  padding: 15px;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  margin: 40px auto 0;
 }
 
-.live-feed-section,
-.inventory-section {
-    width: 45%;
-    background-color: #2c2c54;
-    padding: 15px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+#live-feed-list {
+  list-style: none;
+  padding: 0;
 }
-
-#live-feed-list,
-#inventory-list {
-    list-style: none;
-    padding: 0;
-}
-
 #live-feed-list li {
-    padding: 5px 0;
-    border-bottom: 1px solid #3c3c6e;
-    display: flex;
-    align-items: center;
+  padding: 10px;
+  border-bottom: 2px dashed var(--secondary-accent);
+  display: flex;
+  align-items: center;
+  font-weight: bold;
 }
-
-#inventory-list li {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-    margin-bottom: 5px;
-    border-radius: 5px;
-    background-color: #3c3c6e;
+#live-feed-list li:last-child {
+  border-bottom: none;
 }
-
-#inventory-list li div {
-    display: flex;
-    align-items: center;
+#live-feed-list .stattrack {
+  color: var(--header-color);
 }
-
-.sell-btn {
-    background-color: #e74c3c;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 3px;
-    cursor: pointer;
+#live-feed-list .common {
+  color: var(--common-color);
+}
+#live-feed-list .uncommon {
+  color: var(--uncommon-color);
+}
+#live-feed-list .rare {
+  color: var(--rare-color);
+}
+#live-feed-list .mythical {
+  color: var(--mythical-color);
+}
+#live-feed-list .legendary {
+  color: var(--legendary-color);
+}
+#live-feed-list .ancient {
+  color: var(--ancient-color);
+}
+#live-feed-list .exceedingly-rare {
+  color: var(--exceedingly-rare-color);
+}
+#live-feed-list .infinity {
+  color: var(--infinity-color);
 }
 
 /* --- WINNING ITEM MODAL --- */
 .won-item-modal {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #1a1a2e;
-    border: 5px solid #ffc72c;
-    padding: 30px;
-    z-index: 100;
-    border-radius: 15px;
-    text-align: center;
-    box-shadow: 0 0 20px rgba(255, 199, 44, 0.8);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 100;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.won-item-modal-content {
+  background-color: var(--background-light);
+  padding: 40px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
-.won-item-modal h2 {
-    color: #ffc72c;
+.won-item-modal .modal-item-display .item {
+  width: 200px;
+  height: 200px;
+  border-radius: 15px;
+  font-size: 1.2em;
+  border: none;
+  margin: 20px auto;
 }
 
-.won-item-modal .item {
-    margin: 20px auto;
-    width: 200px;
-    height: 200px;
-    border-radius: 10px;
-    font-size: 1em;
-    /* Reset item styling for display */
-    border-right: none;
+#close-modal-btn {
+  font-family: "Fredoka One", cursive;
+  background-color: var(--primary-accent);
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  margin-top: 20px;
+  border-radius: 25px;
+  font-size: 1.2em;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  border-bottom: 4px solid var(--header-color);
+}
+#close-modal-btn:hover {
+  background-color: var(--header-color);
 }
 
-/* --- PRIZES SECTION & CARD STYLING --- */
-
+/* --- PRIZES PAGE --- */
 .prizes-section {
-    width: 90%;
-    /* Wider container */
-    max-width: 1000px;
-    margin: 40px auto;
-    background-color: #1a1a2e;
-    /* Match body background */
-    padding: 20px 0;
-    border-radius: 10px;
-    text-align: center;
-}
-
-.prizes-section h2 {
-    margin-bottom: 20px;
-    color: #ffc72c;
+  width: 90%;
+  max-width: 1200px;
+  margin: 40px auto;
+  text-align: center;
 }
 
 #chance-list {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    /* Enable grid/flex for card layout */
-    flex-wrap: wrap;
-    /* Allow cards to wrap to the next line */
-    gap: 20px;
-    /* Space between cards */
-    justify-content: center;
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
 }
 
 .prize-card {
-    width: 200px;
-    /* Card width */
-    height: 200px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-    border-radius: 8px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 10px;
-    text-align: center;
-    transition: transform 0.2s;
+  width: 220px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  padding: 15px;
+  text-align: center;
+  transition: transform 0.2s;
+  border: 4px solid;
+}
+.prize-card.common {
+  border-color: var(--common-color);
+}
+.prize-card.uncommon {
+  border-color: var(--uncommon-color);
+}
+.prize-card.rare {
+  border-color: var(--rare-color);
+}
+.prize-card.mythical {
+  border-color: var(--mythical-color);
+}
+.prize-card.legendary {
+  border-color: var(--legendary-color);
+}
+.prize-card.ancient {
+  border-color: var(--ancient-color);
+}
+.prize-card.exceedingly-rare {
+  border-color: var(--exceedingly-rare-color);
+}
+.prize-card.infinity {
+  border-color: var(--infinity-color);
 }
 
 .prize-card:hover {
-    transform: translateY(-5px);
+  transform: translateY(-5px);
 }
 
-/* Inherit Rarity Colors for Card Border/Background */
-
-.prize-card.common {
-    border: 3px solid #b0c4de;
-    background-color: #1f345c;
+.prize-card-img-container {
+  width: 150px;
+  height: 150px;
+  margin: 0 auto 15px;
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
 }
 
-.prize-card.uncommon {
-    border: 3px solid #66bb6a;
-    background-color: #1f5c38;
+.prize-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
-.prize-card.rare {
-    border: 3px solid #42a5f5;
-    background-color: #1f425c;
-}
-
-.prize-card.mythical {
-    border: 3px solid #ab47bc;
-    background-color: #3b1f5c;
-}
-
-.prize-card.legendary {
-    border: 3px solid #ff7043;
-    background-color: #5c301f;
-}
-
-.prize-card.ancient {
-    border: 3px solid #fbc02d;
-    background-color: #5c4b1f;
-}
-
-.prize-card.exceedingly-rare {
-    border: 3px solid #e91e63;
-    background-color: #5c1f30;
-}
-
-.prize-card.infinity {
-    border: 3px solid #00ffff;
-    background-color: #1f5c5c;
-}
-
-
-/* Card Image Styling */
-.prize-card-img,
-.prize-card-img-placeholder {
-    width: 100px;
-    height: 100px;
-    object-fit: contain;
-    margin-bottom: 10px;
-    /* Increased margin for slight separation */
-    border-radius: 5px;
-    background-color: #0f0f1b;
-}
-
-.prize-card-img-placeholder {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 3em;
-}
-
-/* Card Text Details */
 .card-details {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
 }
 
 .item-name {
-    font-weight: bold;
-    font-size: 1.1em;
-    margin-bottom: 5px;
-    color: #ffffff;
-    /* Keep name white */
+  font-weight: bold;
+  font-size: 1.2em;
+  margin-bottom: 8px;
+  color: var(--text-color);
 }
 
 .item-rarity {
-    font-size: 0.9em;
-    color: #aaa;
-    /* Gray for less emphasis */
-    margin-bottom: 8px;
+  font-size: 0.9em;
+  color: #999;
+  margin-bottom: 10px;
+  font-style: italic;
 }
 
 .item-chance {
-    font-weight: bold;
-    color: #ffc72c;
-    /* Highlight the percentage */
-    background-color: rgba(0, 0, 0, 0.3);
-    padding: 4px 8px;
-    border-radius: 4px;
-}
-
-/* --- MODAL BUTTON STYLING (close-modal-btn) --- */
-#close-modal-btn {
-    background-color: #ffc72c;
-    /* Gold/Yellow color to match branding */
-    color: #1a1a2e;
-    /* Dark text for contrast */
-    border: none;
-    padding: 12px 30px;
-    margin-top: 20px;
-    border-radius: 8px;
-    font-size: 1.1em;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.2s, transform 0.1s;
-    box-shadow: 0 4px 0 #d8a825;
-    /* 3D effect shadow */
-}
-
-#close-modal-btn:hover {
-    background-color: #ffd86d;
-    /* Lighter color on hover */
-    transform: translateY(-2px);
-    /* Slight lift effect */
-    box-shadow: 0 6px 0 #d8a825;
-}
-
-#close-modal-btn:active {
-    transform: translateY(2px);
-    /* Press down effect */
-    box-shadow: 0 2px 0 #d8a825;
+  font-weight: bold;
+  font-size: 1em;
+  color: var(--header-color);
+  background-color: var(--background-dark);
+  padding: 5px 10px;
+  border-radius: 15px;
 }
