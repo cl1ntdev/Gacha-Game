@@ -143,7 +143,7 @@
     uncommon: 300,
     rare: 700,
     mythical: 120,
-    legendary: 6,
+    legendary: 3,
   };
 
   const rarity_INFINITY_Weights = {
@@ -151,7 +151,7 @@
     uncommon: 6,
     rare: 450,
     mythical: 120,
-    legendary: 10,
+    legendary: 5,
     infinity: 1,
   };
 

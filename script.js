@@ -11,7 +11,7 @@
   const openInfinityCaseBtn = document.getElementById("open-infinity-case-btn");
   const wonItemContainer = document.getElementById("won-item-container");
   const liveFeedList = document.getElementById("live-feed-list");
-
+  const openPromoCaseBtn = document.querySelector(".promo-case");
   // --- GAME DATA ---
   const items = [
     {
@@ -156,7 +156,7 @@
     uncommon: 300,
     rare: 700,
     mythical: 120,
-    legendary: 6,
+    legendary: 3,
   };
 
   const rarity_INFINITY_Weights = {
@@ -164,7 +164,7 @@
     uncommon: 6,
     rare: 450,
     mythical: 120,
-    legendary: 10,
+    legendary: 5,
     infinity: 1,
   };
 
@@ -199,6 +199,7 @@
 
   // --- INITIALIZATION ---
   let caseType = "";
+  let state = "none"
   function init() {
     openNormalCaseBtn.addEventListener("click", () => {
       ((caseType = "normal"), openCase(caseTiers.normal));
@@ -211,6 +212,21 @@
       caseType = "infinity";
       openCase(caseTiers.infinity);
     });
+    openPromoCaseBtn.addEventListener("click", () => {
+      console.log(state)
+      if(state === "none") {
+        openInfinityCaseBtn.innerText = 'Use Infinity Ticket 5x Promo'
+        openRareCaseBtn.innerText = 'Use Premium Ticket 5x Promo'
+        openNormalCaseBtn.innerText = 'Use Normal Ticket 5x Promo'
+        state = "promo";
+      }else {
+        openInfinityCaseBtn.innerText = ' Use Common Ticket (5 PHP)'
+        openRareCaseBtn.innerText = ' Use Premium Ticket (10 PHP)'
+        openNormalCaseBtn.innerText = ' Use Infinity Ticket (15 PHP)'
+        state = 'none' 
+      }
+    });
+  
   }
 
   // --- CORE GAME LOGIC ---
@@ -280,6 +296,8 @@
     return itemPool[itemPool.length - 1];
   }
 
+  
+  let spins = 0;
   function onSpinEnd(winningItem, caseTier) {
     isSpinning = false;
 
@@ -290,7 +308,30 @@
     //   setTimeout(() => openCase(caseTier), 500);
     //   return;
     // }
-
+    if(state == 'promo'){
+        
+        if (winningItem.name.includes("Spin Again")) {
+          setButtonsDisabled(false);
+          setTimeout(() => openCase(caseTier), 500);
+          return;
+        }
+      
+      
+        if(spins >= 5){
+          setButtonsDisabled(false);
+          spins = 0;
+          return
+        }else{
+          spins++;
+          
+          updateLiveFeed(winningItem);
+          setButtonsDisabled(false);
+          setTimeout(() => openCase(caseTier), 500);
+          console.log(spins)
+        }
+        return;
+    }
+    
     if (winningItem.name.includes("Spin Again")) {
       setButtonsDisabled(false);
       setTimeout(() => openCase(caseTier), 500);
