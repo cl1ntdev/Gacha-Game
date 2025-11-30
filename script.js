@@ -317,18 +317,21 @@
         }
       
       
-        if(spins >= 5){
+        if(spins == 4){
           setButtonsDisabled(false);
+          updateLiveFeed(winningItem);
           spins = 0;
           return
         }else{
-          spins++;
           
           updateLiveFeed(winningItem);
           setButtonsDisabled(false);
           setTimeout(() => openCase(caseTier), 500);
-          console.log(spins)
+          spins++;
+          
         }
+        console.log(spins)
+        
         return;
     }
     
@@ -415,7 +418,7 @@
 
   function updateLiveFeed(item) {
     liveFeed.unshift(item);
-    if (liveFeed.length > 5) {
+    if (liveFeed.length > 10) {
       liveFeed.pop();
     }
 

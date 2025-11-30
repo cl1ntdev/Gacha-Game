@@ -237,6 +237,8 @@ main {
   border-radius: 15px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
   margin: 40px auto 0;
+  max-height: 300px; /* Adjust as needed */
+  overflow-y: scroll;
 }
 
 #live-feed-list {
@@ -439,4 +441,49 @@ main {
   background-color: var(--background-dark);
   padding: 5px 10px;
   border-radius: 15px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* --- PROMO INFO --- */
+.promo-info {
+  background-color: var(--background-dark);
+  padding: 15px;
+  border-radius: 15px;
+  margin: 20px auto;
+  width: 80%;
+  max-width: 600px;
+}
+
+.promo-info h3 {
+  margin-top: 0;
+  color: var(--header-color);
+}
+
+.promo-info ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.promo-info li {
+  margin-bottom: 10px;
+  font-weight: bold;
 }

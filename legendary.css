@@ -1,0 +1,79 @@
+@import url("https://fonts.googleapis.com/css2?family=Fredoka+One&family=Open+Sans&display=swap");
+
+body {
+    margin: 0;
+    padding: 0;
+    background-image: url('images/Gemini_Generated_Image_2bvk6l2bvk6l2bvk.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    font-family: "Open Sans", sans-serif;
+    color: #5d5d5d;
+    text-align: center;
+}
+
+h1 {
+  font-family: "Fredoka One", cursive;
+  color: #e88482;
+  font-size: 3rem;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+}
+.container{
+    padding-top: 100px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+}
+.reel-container {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    height: 250px;
+    margin: 50px 0;
+    -webkit-mask-image: linear-gradient(to right, transparent, black 20%, black 80%, transparent);
+    mask-image: linear-gradient(to right, transparent, black 20%, black 80%, transparent);
+}
+
+.reel {
+    display: flex;
+    position: absolute;
+    left: 0;
+    top: 0;
+    animation: spin 30s linear infinite;
+    height: 100%;
+}
+
+.reel img {
+    height: 100%;
+    margin-right: 20px;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+@keyframes spin {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+.nav-links {
+  margin-top: 40px;
+}
+
+.nav-link {
+  font-family: "Fredoka One", cursive;
+  text-decoration: none;
+  background-color: #f2a2a0;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 20px;
+  transition: background-color 0.2s;
+}
+
+.nav-link:hover {
+  background-color: #e88482;
+}
