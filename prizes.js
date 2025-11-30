@@ -129,29 +129,50 @@
     },
   ];
 
-  const rarityWeights = {
-    common: 7500, // Increased
+  let rarity_NORMAL_Weights = {
+    common: 3000,
     uncommon: 2000,
-    rare: 450, // Decreased
-    mythical: 50,  // Decreased
-    legendary: 10, // Decreased
-    ancient: 4,    // Decreased
-    "exceedingly-rare": 1,
+    rare: 450,
+    mythical: 1,
+    legendary: 1,
+  };
+  let rarityWeights = rarity_NORMAL_Weights;
+
+  const rarity_PREMIUM_Weights = {
+    common: 200,
+    uncommon: 300,
+    rare: 700,
+    mythical: 120,
+    legendary: 6,
+  };
+
+  const rarity_INFINITY_Weights = {
+    common: 5,
+    uncommon: 6,
+    rare: 450,
+    mythical: 120,
+    legendary: 10,
     infinity: 1,
   };
 
   const chanceList = document.getElementById("chance-list");
+  const normalCaseBtn = document.getElementById("normal-case-btn");
+  const premiumCaseBtn = document.getElementById("premium-case-btn");
+  const infinityCaseBtn = document.getElementById("infinity-case-btn");
 
-  function displayPrizePool() {
+  function displayPrizePool(rarityWeights) {
     if (!chanceList) return;
     chanceList.innerHTML = "";
 
-    const totalWeight = items.reduce(
+    const allowedRarities = Object.keys(rarityWeights);
+    const filteredItems = items.filter(item => allowedRarities.includes(item.rarity));
+
+    const totalWeight = filteredItems.reduce(
       (sum, item) => sum + (rarityWeights[item.rarity] || 0),
       0
     );
 
-    const sortedItems = [...items].sort(
+    const sortedItems = [...filteredItems].sort(
       (a, b) =>
         (rarityWeights[b.rarity] || 0) - (rarityWeights[a.rarity] || 0)
     );
@@ -179,5 +200,10 @@
     });
   }
 
-  displayPrizePool();
+  normalCaseBtn.addEventListener("click", () => displayPrizePool(rarity_NORMAL_Weights));
+  premiumCaseBtn.addEventListener("click", () => displayPrizePool(rarity_PREMIUM_Weights));
+  infinityCaseBtn.addEventListener("click", () => displayPrizePool(rarity_INFINITY_Weights));
+
+  // Initially display the normal case prize pool
+  displayPrizePool(rarity_NORMAL_Weights);
 })();

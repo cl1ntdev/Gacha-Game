@@ -330,6 +330,15 @@ main {
 }
 
 /* --- PRIZES PAGE --- */
+.case-selector {
+  margin-bottom: 20px;
+}
+
+.case-selector .case-btn {
+  font-size: 1em;
+  padding: 10px 20px;
+}
+
 .prizes-section {
   width: 90%;
   max-width: 1200px;

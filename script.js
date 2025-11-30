@@ -142,66 +142,53 @@
     },
   ];
 
-  let rarityWeights = {
-    // NORMAL
-    common: 7500,
-    uncommon: 2000,
-    rare: 450,
-    mythical: 50,
-    legendary: 10,
-    ancient: 4,
-    "exceedingly-rare": 1,
-    infinity: 1,
-  };
-
   let rarity_NORMAL_Weights = {
-    // NORMAL
-    common: 7500,
+    common: 3000,
     uncommon: 2000,
     rare: 450,
-    mythical: 50,
-    legendary: 10,
-    ancient: 4,
-    "exceedingly-rare": 1,
-    infinity: 1,
+    mythical: 1,
+    legendary: 1,
   };
+  let rarityWeights = rarity_NORMAL_Weights;
 
   const rarity_PREMIUM_Weights = {
-    common: 2000,
-    uncommon: 2000,
-    rare: 500,
-    mythical: 50,
-    legendary: 10,
-    ancient: 4,
-    "exceedingly-rare": 1,
-    infinity: 1,
+    common: 200,
+    uncommon: 300,
+    rare: 700,
+    mythical: 120,
+    legendary: 6,
   };
 
   const rarity_INFINITY_Weights = {
-    common: 900,
-    uncommon: 900,
+    common: 5,
+    uncommon: 6,
     rare: 450,
-    mythical: 50,
+    mythical: 120,
     legendary: 10,
-    ancient: 4,
-    "exceedingly-rare": 10,
-    infinity: 10,
+    infinity: 1,
   };
 
   const caseTiers = {
     normal: {
-      allowedRarities: ["common", "uncommon", "rare"],
+      allowedRarities: ["common", "uncommon", "rare", "mythical", "legendary"],
     },
     rare: {
-      allowedRarities: ["rare", "mythical", "legendary"],
-    },
-    infinity: {
       allowedRarities: [
+        "common",
+        "uncommon",
+        ,
         "rare",
         "mythical",
         "legendary",
-        "ancient",
-        "exceedingly-rare",
+      ],
+    },
+    infinity: {
+      allowedRarities: [
+        "common",
+        "uncommon",
+        "rare",
+        "mythical",
+        "legendary",
         "infinity",
       ],
     },
@@ -217,7 +204,7 @@
       ((caseType = "normal"), openCase(caseTiers.normal));
     });
     openRareCaseBtn.addEventListener("click", () => {
-      caseType = "rare"
+      caseType = "rare";
       openCase(caseTiers.rare);
     });
     openInfinityCaseBtn.addEventListener("click", () => {
@@ -252,11 +239,11 @@
   function determineWinningItem(availableItems) {
     let winningItem = { ...getWeightedItem(availableItems) };
 
-    if (Math.random() < STATTRAK_CHANCE) {
-      winningItem.name = `StatTrak™ ${winningItem.name}`;
-      winningItem.value *= 5;
-      winningItem.isStatTrak = true;
-    }
+    // if (Math.random() < STATTRAK_CHANCE) {
+    //   winningItem.name = `StatTrak™ ${winningItem.name}`;
+    //   winningItem.value *= 5;
+    //   winningItem.isStatTrak = true;
+    // }
     return winningItem;
   }
 
@@ -295,6 +282,14 @@
 
   function onSpinEnd(winningItem, caseTier) {
     isSpinning = false;
+
+    // for debug
+    // if (winningItem != null) {
+    //   updateLiveFeed(winningItem);
+    //   setButtonsDisabled(false);
+    //   setTimeout(() => openCase(caseTier), 500);
+    //   return;
+    // }
 
     if (winningItem.name.includes("Spin Again")) {
       setButtonsDisabled(false);
