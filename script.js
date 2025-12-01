@@ -220,9 +220,9 @@
         openNormalCaseBtn.innerText = 'Use Normal Ticket 5x Promo'
         state = "promo";
       }else {
-        openInfinityCaseBtn.innerText = ' Use Common Ticket (5 PHP)'
+        openInfinityCaseBtn.innerText = ' Use Infinity Ticket (5 PHP)'
         openRareCaseBtn.innerText = ' Use Premium Ticket (10 PHP)'
-        openNormalCaseBtn.innerText = ' Use Infinity Ticket (15 PHP)'
+        openNormalCaseBtn.innerText = ' Use Normal Ticket (15 PHP)'
         state = 'none' 
       }
     });

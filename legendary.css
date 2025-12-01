@@ -1,20 +1,30 @@
 @import url("https://fonts.googleapis.com/css2?family=Fredoka+One&family=Open+Sans&display=swap");
 
+:root {
+  --background-light: #e3f2fd;
+  --background-dark: #bbdefb;
+  --primary-accent: #64b5f6;
+  --secondary-accent: #42a5f5;
+  --text-color: #1e88e5;
+  --header-color: #1565c0;
+}
+
 body {
     margin: 0;
     padding: 0;
-    background-image: url('images/Gemini_Generated_Image_2bvk6l2bvk6l2bvk.png');
+    /* Please replace this with a real image url */
+    background-image: url('https://via.placeholder.com/1920x1080/e3f2fd/bbdefb?text=Wholesome+Blue+Background');
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
     font-family: "Open Sans", sans-serif;
-    color: #5d5d5d;
+    color: var(--text-color);
     text-align: center;
 }
 
 h1 {
   font-family: "Fredoka One", cursive;
-  color: #e88482;
+  color: var(--header-color);
   font-size: 3rem;
   text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
 }
@@ -67,7 +77,7 @@ h1 {
 .nav-link {
   font-family: "Fredoka One", cursive;
   text-decoration: none;
-  background-color: #f2a2a0;
+  background-color: var(--primary-accent);
   color: white;
   padding: 10px 20px;
   border-radius: 20px;
@@ -75,5 +85,5 @@ h1 {
 }
 
 .nav-link:hover {
-  background-color: #e88482;
+  background-color: var(--header-color);
 }

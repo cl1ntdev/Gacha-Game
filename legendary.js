@@ -1,6 +1,17 @@
 const reel = document.querySelector('.reel');
 
 const penguins = [
+    'Bouquet.png',
+    'Black_Penguin.png',
+    'Blue_Penguin.png',
+    'Brown_Penguin.png',
+    'Green_Penguin.png',
+    'Orange_Penguin.png',
+    'Pink_Penguin.png',
+    'Purple_Penguin.png',
+    'Red_Penguin.png',
+    'Sky_Blue_Penguin.png',
+    'Bouquet.png',
     'Black_Penguin.png',
     'Blue_Penguin.png',
     'Brown_Penguin.png',

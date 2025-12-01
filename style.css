@@ -2,27 +2,28 @@
 
 /* --- VARIABLES --- */
 :root {
-  --background-light: #fdf6f0;
-  --background-dark: #f0e9e2;
-  --primary-accent: #f2a2a0;
-  --secondary-accent: #f5cdb8;
-  --text-color: #5d5d5d;
-  --header-color: #e88482;
+  --background-light: #e3f2fd;
+  --background-dark: #bbdefb;
+  --primary-accent: #64b5f6;
+  --secondary-accent: #42a5f5;
+  --text-color: #1e88e5;
+  --header-color: #1565c0;
 
-  --common-color: #a0a0a0;
-  --uncommon-color: #85c67a;
-  --rare-color: #7ab4c6;
-  --mythical-color: #c67ac4;
-  --legendary-color: #e09a69;
-  --ancient-color: #e0d069;
-  --exceedingly-rare-color: #e06969;
-  --infinity-color: #69d4e0;
+  --common-color: #90a4ae;
+  --uncommon-color: #64b5f6;
+  --rare-color: #42a5f5;
+  --mythical-color: #1e88e5;
+  --legendary-color: #1565c0;
+  --ancient-color: #0d47a1;
+  --exceedingly-rare-color: #82b1ff;
+  --infinity-color: #448aff;
 }
 
 /* --- GENERAL STYLES --- */
 body {
   font-family: "Open Sans", sans-serif;
-  background-image: url('images/Gemini_Generated_Image_2bvk6l2bvk6l2bvk.png');
+  /* Please replace this with a real image url */
+  background-image: url('https://via.placeholder.com/1920x1080/e3f2fd/bbdefb?text=Wholesome+Blue+Background');
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -118,7 +119,8 @@ main {
   transform: translate(-50%, -50%);
   width: 10px;
   height: 10px;
-  background-color: var(--primary-accent);
+  background-color: black;
+  /*background-color: var(--primary-accent);*/
   border-radius: 50%;
   z-index: 10;
   box-shadow: 0 0 10px var(--primary-accent);
@@ -132,6 +134,8 @@ main {
   border-left: 10px solid transparent;
   border-right: 10px solid transparent;
   border-bottom: 15px solid var(--primary-accent);
+  /*background-color: black;*/
+  
 }
 .marker::after {
   content: "";
@@ -486,4 +490,8 @@ main {
 .promo-info li {
   margin-bottom: 10px;
   font-weight: bold;
+}
+
+.promo-case{
+    background: black;
 }
