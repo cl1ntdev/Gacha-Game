@@ -12,6 +12,7 @@ const penguins = [
     'Red_Penguin.png',
     'Sky_Blue_Penguin.png',
     'Bouquet.png',
+    'Sticker.png',
     'Black_Penguin.png',
     'Blue_Penguin.png',
     'Brown_Penguin.png',
@@ -20,7 +21,8 @@ const penguins = [
     'Pink_Penguin.png',
     'Purple_Penguin.png',
     'Red_Penguin.png',
-    'Sky_Blue_Penguin.png'
+    'Sky_Blue_Penguin.png',
+    'Sticker.png'
 ];
 
 const imagePromises = penguins.map(src => {
